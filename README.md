@@ -11,7 +11,7 @@ Demonstrate a complete data pipeline:
 4. Pin to **IPFS** via **Pinata** (no Docker required) or local Kubo to get a **CID**
 5. Mint **ERC-721** NFT with `tokenURI = ipfs://<CID>` on **Sepolia** or local chain
 
-## 📋 Proof Artifacts
+## Proof Artifacts
 
 After running the pipeline, you'll have:
 - Generated chart image (PNG) visualizing transaction data
