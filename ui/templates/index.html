@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +33,7 @@
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .header p {
@@ -45,7 +46,7 @@
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .config-grid {
@@ -85,7 +86,7 @@
             border-radius: 12px;
             padding: 25px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
@@ -129,14 +130,14 @@
             background: white;
             border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .live-summary {
             background: white;
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .live-summary h2 {
@@ -302,7 +303,7 @@
             font-size: 0.9em;
             padding: 5px 12px;
             border-radius: 20px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .step-body {
@@ -371,14 +372,16 @@
             display: inline-block;
             width: 16px;
             height: 16px;
-            border: 3px solid rgba(255,255,255,0.3);
+            border: 3px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             border-top-color: white;
             animation: spin 1s linear infinite;
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .results-panel {
@@ -386,7 +389,7 @@
             border-radius: 12px;
             padding: 25px;
             margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             display: none;
         }
 
@@ -455,10 +458,11 @@
         .image-preview img {
             max-width: 100%;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -470,8 +474,9 @@
             <h2 style="margin-bottom: 15px; color: #333;">Pipeline Configuration</h2>
             <div class="config-grid">
                 <div class="config-item">
-                    <label>Ethereum Address</label>
-                    <input type="text" id="ethAddress" value="0x742d35Cc6634C0532925a3b844Bc454e4438f44e" placeholder="0x...">
+                    <label>Metamask wallet address</label>
+                    <input type="text" id="ethAddress" value="0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+                        placeholder="0x...">
                 </div>
                 <div class="config-item">
                     <label>Pages to Fetch</label>
@@ -487,7 +492,8 @@
                 </div>
                 <div class="config-item">
                     <label>NFT Contract Address</label>
-                    <input type="text" id="nftAddr" value="{{ nft_addr }}" readonly style="font-family: monospace; font-size: 0.85em;">
+                    <input type="text" id="nftAddr" value="{{ nft_addr }}" readonly
+                        style="font-family: monospace; font-size: 0.85em;">
                 </div>
             </div>
         </div>
@@ -497,14 +503,15 @@
                 ▶️ Start Complete Pipeline
             </button>
             <p style="margin-top: 15px; color: #666; font-size: 0.95em;">
-                This will run all stages: Ingest → Convert → Generate Image → Upload to IPFS → Deploy Contract → Mint NFT
+                This will run all stages: Ingest → Convert → Generate Image → Upload to IPFS → Deploy Contract → Mint
+                NFT
             </p>
         </div>
 
         <div class="dashboard-grid">
             <div class="pipeline-status">
                 <h2 style="margin-bottom: 20px; color: #333;">Pipeline Progress</h2>
-                
+
                 <!-- Step 1: Ingestion -->
                 <div class="step" id="step-ingest">
                     <div class="step-header" onclick="toggleStep('ingest')">
@@ -585,7 +592,7 @@
                     <div class="step-header" onclick="toggleStep('mint')">
                         <div class="step-title">
                             <span class="step-icon">🎁</span>
-                            <span>Step 6: Mint NFT</span>
+                            <span>Step 6: Tokenization (Mint digital assets)</span>
                         </div>
                         <span class="step-status" id="status-mint">Pending</span>
                     </div>
@@ -637,9 +644,9 @@
         function updateStepStatus(stepName, status, statusText) {
             const step = document.getElementById(`step-${stepName}`);
             const statusEl = document.getElementById(`status-${stepName}`);
-            
+
             step.classList.remove('active', 'completed', 'error');
-            
+
             if (status === 'running') {
                 step.classList.add('active', 'expanded');
                 statusEl.innerHTML = '<span class="spinner"></span> Running...';
@@ -681,28 +688,28 @@
             try {
                 const response = await fetch(endpoint);
                 const data = await response.json();
-                
+
                 updateLog(stepName, data.logs || '');
-                
+
                 if (!data.running) {
                     clearInterval(pollInterval);
-                    
+
                     // Check if successful (exit code 0 or specific success indicators)
                     const isSuccess = data.logs && (
-                        data.logs.includes('✅') || 
+                        data.logs.includes('✅') ||
                         data.logs.includes('complete') ||
                         data.logs.includes('finished with code 0') ||
                         data.logs.includes('Skipping deployment')
                     );
-                    
+
                     updateStepStatus(stepName, isSuccess ? 'completed' : 'error');
-                    
+
                     // Extract details from logs
                     extractDetails(stepName, data.logs);
-                    
+
                     return true; // Step finished
                 }
-                
+
                 return false; // Still running
             } catch (error) {
                 console.error('Error polling status:', error);
@@ -712,11 +719,11 @@
 
         function extractDetails(stepName, logs) {
             const details = {};
-            
+
             if (stepName === 'ingest') {
                 const txMatch = logs.match(/(\d+)\s+transactions/i);
                 if (txMatch) details['Transactions'] = txMatch[1];
-                
+
                 const filesMatch = logs.match(/(\d+)\s+parquet/i);
                 if (filesMatch) details['Files Created'] = filesMatch[1];
             } else if (stepName === 'convert') {
@@ -728,23 +735,23 @@
             } else if (stepName === 'ipfs') {
                 const cidMatch = logs.match(/CID:\s*(\w+)/);
                 if (cidMatch) details['Image CID'] = cidMatch[1];
-                
+
                 const metaCidMatch = logs.match(/Metadata CID:\s*(\w+)/);
                 if (metaCidMatch) details['Metadata CID'] = metaCidMatch[1];
             } else if (stepName === 'deploy') {
                 const addrMatch = logs.match(/0x[a-fA-F0-9]{40}/);
                 if (addrMatch) details['Contract Address'] = addrMatch[0];
-                
+
                 const txMatch = logs.match(/Transaction:\s*(0x[a-fA-F0-9]{64})/);
                 if (txMatch) details['TX Hash'] = txMatch[1];
             } else if (stepName === 'mint') {
                 const tokenMatch = logs.match(/Token ID:\s*(\d+)/);
                 if (tokenMatch) details['Token ID'] = tokenMatch[1];
-                
+
                 const txMatch = logs.match(/0x[a-fA-F0-9]{64}/);
                 if (txMatch) details['TX Hash'] = txMatch[0];
             }
-            
+
             if (Object.keys(details).length > 0) {
                 updateDetails(stepName, details);
             }
@@ -820,21 +827,21 @@
 
         async function runStep(stepName, endpoint, payload = {}) {
             updateStepStatus(stepName, 'running');
-            
+
             try {
                 // Start the step
                 const response = await fetch(endpoint, {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-                
+
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}`);
                 }
-                
+
                 const result = await response.json();
-                
+
                 // Check if step was skipped (e.g., deployment with existing contract)
                 if (result.status === 'skipped') {
                     const statusEndpoint = endpoint + '/status';
@@ -844,7 +851,7 @@
                     setTimeout(() => runNextStep(stepName), 500);
                     return;
                 }
-                
+
                 // Poll for status
                 const statusEndpoint = endpoint + '/status';
                 pollInterval = setInterval(async () => {
@@ -855,7 +862,7 @@
                         setTimeout(() => runNextStep(stepName), 1000);
                     }
                 }, 1000);
-                
+
             } catch (error) {
                 updateStepStatus(stepName, 'error');
                 updateLog(stepName, `Error: ${error.message}`);
@@ -866,7 +873,7 @@
         function runNextStep(currentStep) {
             const steps = ['ingest', 'convert', 'image', 'ipfs', 'deploy', 'mint'];
             const currentIndex = steps.indexOf(currentStep);
-            
+
             if (currentIndex < steps.length - 1) {
                 const nextStep = steps[currentIndex + 1];
                 executeStep(nextStep);
@@ -881,10 +888,10 @@
         function executeStep(stepName) {
             const address = document.getElementById('ethAddress').value;
             const pages = document.getElementById('pages').value;
-            
-            switch(stepName) {
+
+            switch (stepName) {
                 case 'ingest':
-                    runStep('ingest', '/api/run/ingest', {address, pages});
+                    runStep('ingest', '/api/run/ingest', { address, pages });
                     break;
                 case 'convert':
                     runStep('convert', '/api/run/convert');
@@ -909,7 +916,7 @@
             button.disabled = true;
             button.textContent = '⏳ Running Pipeline...';
             loadLiveSummary();
-            
+
             // Reset all steps
             const steps = ['ingest', 'convert', 'image', 'ipfs', 'deploy', 'mint'];
             steps.forEach(step => {
@@ -917,9 +924,9 @@
                 updateLog(step, '');
                 document.getElementById(`details-${step}`).style.display = 'none';
             });
-            
+
             document.getElementById('resultsPanel').classList.remove('show');
-            
+
             // Start first step
             executeStep('ingest');
         }
@@ -928,9 +935,9 @@
             try {
                 const response = await fetch('/api/results');
                 const data = await response.json();
-                
+
                 let html = '';
-                
+
                 // Contract Info
                 if (data.contract) {
                     html += `
@@ -952,7 +959,7 @@
                         </div>
                     `;
                 }
-                
+
                 // NFT Info
                 if (data.nft) {
                     html += `
@@ -973,7 +980,7 @@
                         </div>
                     `;
                 }
-                
+
                 // IPFS Info
                 if (data.ipfs) {
                     html += `
@@ -981,11 +988,15 @@
                             <h3>📌 IPFS Data</h3>
                             <div class="result-item">
                                 <div class="result-label">Image CID</div>
-                                <div class="result-value">${data.ipfs.image_cid || 'N/A'}</div>
+                                <div class="result-value">
+                                    ${data.ipfs.image_cid ? `<a href="https://gateway.pinata.cloud/ipfs/${data.ipfs.image_cid}" target="_blank">${data.ipfs.image_cid}</a>` : 'N/A'}
+                                </div>
                             </div>
                             <div class="result-item">
                                 <div class="result-label">Metadata CID</div>
-                                <div class="result-value">${data.ipfs.metadata_cid || 'N/A'}</div>
+                                <div class="result-value">
+                                    ${data.ipfs.metadata_cid ? `<a href="https://gateway.pinata.cloud/ipfs/${data.ipfs.metadata_cid}" target="_blank">${data.ipfs.metadata_cid}</a>` : 'N/A'}
+                                </div>
                             </div>
                             ${data.ipfs.gateway_url ? `
                                 <a href="${data.ipfs.gateway_url}" target="_blank" class="link-button">
@@ -995,7 +1006,7 @@
                         </div>
                     `;
                 }
-                
+
                 // Data Stats
                 if (data.data) {
                     html += `
@@ -1017,10 +1028,10 @@
                         </div>
                     `;
                 }
-                
+
                 document.getElementById('resultsGrid').innerHTML = html;
                 document.getElementById('resultsPanel').classList.add('show');
-                
+
             } catch (error) {
                 console.error('Error fetching results:', error);
             }
@@ -1042,4 +1053,5 @@
         });
     </script>
 </body>
+
 </html>
