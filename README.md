@@ -22,7 +22,7 @@ After running the pipeline, you'll have:
 - Token ID with tokenURI pointing to IPFS metadata
 - Screenshots of IPFS content and on-chain verification
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -89,7 +89,7 @@ export RECIPIENT=recipient_address
 ./scripts/run_pipeline.sh 0x742d35Cc6634C0532925a3b844Bc454e4438f44e 10
 ```
 
-## 📝 Manual Step-by-Step
+## Manual Step-by-Step
 
 ### 1. Install Dependencies
 
@@ -189,7 +189,7 @@ The project includes several helper scripts in the `scripts/` directory:
 - **`verify.sh`** - Verify tokenURI on-chain
 - **`run_pipeline.sh`** - Run complete pipeline
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 pipeline_demo/
@@ -241,7 +241,7 @@ pipeline_demo/
 - **Local Anvil**: For development and testing
 - Requires deployed ERC-721 contract
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -338,7 +338,7 @@ curl -s -H "Authorization: Bearer $PINATA_JWT" \
   https://api.pinata.cloud/data/testAuthentication
 ```
 
-## 🎯 Expected Output
+## Expected Output
 
 After successful completion, you should see:
 
@@ -350,6 +350,6 @@ After successful completion, you should see:
 6. **NFT**: Transaction hash and token ID
 7. **Verification**: Confirmed `ipfs://<metadata_CID>` on-chain
 
-## 📄 License
+## License
 
 This project is for demonstration purposes. Please ensure you comply with Etherscan's API terms of service and any applicable regulations when using this code.
