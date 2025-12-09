@@ -2,7 +2,7 @@
 ### Live Demo URL: <a>https://blockchainetherscanpipeline.onrender.com/</a>
 A reproducible mini-pipeline that pulls Ethereum transaction data from Etherscan into Spark (PySpark), generates visual representations, exports a compact JSONL summary, pins artifacts to IPFS (via Pinata or local Kubo), and mints an ERC-721 NFT on Sepolia testnet or local chain with `tokenURI = ipfs://<CID>`.
 
-## 🎯 End Goal
+## End Goal
 
 Demonstrate a complete data pipeline:
 1. **Etherscan** → **Spark** (PySpark) data ingestion (supports Sepolia testnet)
@@ -264,7 +264,6 @@ pipeline_demo/
    foundryup
    source ~/.zshrc
    ```
-
 5. **Environment variables not set**
    - Run `./scripts/setup.sh` to check all prerequisites
    - Set missing variables as shown in the setup output
@@ -350,67 +349,6 @@ After successful completion, you should see:
 5. **Contract**: Deployed address saved to `/tmp/nft_address.env`
 6. **NFT**: Transaction hash and token ID
 7. **Verification**: Confirmed `ipfs://<metadata_CID>` on-chain
-
-## 📸 Screenshots to Take
-
-1. IPFS gateway showing the chart image
-2. IPFS gateway showing the metadata JSON
-3. TokenURI verification output showing `ipfs://<CID>`
-4. Transaction details on Sepolia Etherscan
-5. NFT details on OpenSea testnet (optional)
-
-## 🧪 Testing
-
-### End-to-End Test Suite
-
-The project includes a comprehensive end-to-end test suite that validates:
-
-- **Full Pipeline Flow**: Complete pipeline execution on Sepolia testnet
-- **Error Scenarios**: Invalid addresses, missing API keys, insufficient funds, etc.
-- **Stage Independence**: Stages can run independently and idempotently
-
-#### Running Tests
-
-```bash
-# Run full test suite
-./scripts/run_e2e_tests.sh
-
-# Run quick tests (error scenarios and stage independence only)
-./scripts/run_e2e_tests.sh --quick
-
-# Run tests directly with Python
-python3 test_e2e_sepolia.py
-```
-
-#### Test Prerequisites
-
-- Sepolia testnet ETH in your wallet
-- Valid Etherscan API key
-- Pinata JWT token (for IPFS tests)
-- All environment variables configured in `.env`
-
-For detailed test documentation, see [TEST_DOCUMENTATION.md](TEST_DOCUMENTATION.md).
-
-### Unit Tests
-
-```bash
-# Test Pinata integration functions
-python3 test_pinata_integration.py
-
-# Quick component verification
-./scripts/quick_test.sh
-```
-
-## 🔄 Stretch Goals
-
-- ✅ Swap local IPFS for Pinata pinning (persistent CID)
-- ✅ Point to testnet RPC (Sepolia) with explorer links
-- ✅ Add visual data representation (chart generation)
-- ✅ Comprehensive end-to-end test suite
-- Add Spark transformations (group-by KPIs) before JSONL export
-- Implement advanced data validation and error handling
-- Add monitoring and logging dashboard
-- Support multiple chains (Polygon, Arbitrum, etc.)
 
 ## 📄 License
 
